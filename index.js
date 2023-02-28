@@ -10,3 +10,5 @@ app.use("/api/students", router);
 app.get("/api", (req, res) => res.send("Welcome to my API!!!"));
 
 app.listen(port, () => console.log(`server is running on port ${port}`));
+
+
