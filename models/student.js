@@ -21,7 +21,7 @@ class Student {
   static async find(id) {
     const response = await db
       .collection("students")
-      .where("id", "==", id)
+      .where("id", "==", parseInt(id))
       .get();
 
     return response.docs.map((doc) => doc.data());
@@ -33,7 +33,11 @@ class Student {
     const res = await db.collection("students").doc().set(student);
   }
 
-  static destroy() {
+  static async destroy(id) {
+    await db.collection("students")
+    .where("id", "==", parseInt(id))
+    .get()
+    .then(res => res.forEach(r => r.ref.delete()))
     return `Deleted a student with id ${id}`;
   }
 }

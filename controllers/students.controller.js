@@ -6,6 +6,7 @@ const findAll = async (req, res) => {
 };
 
 const find = async (req, res) => {
+  // console.log(req.params.id)
   const student = await Student.find(req.params.id);
   res.status(200).send({ student });
 };
